@@ -2,6 +2,8 @@ FROM node:18-alpine AS build
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
+ARG BACKEND_CONTAINER_NAME
+ENV REACT_APP_BACKEND_HOST_NAME=${BACKEND_CONTAINER_NAME}
 COPY . .
 RUN npm run build
 

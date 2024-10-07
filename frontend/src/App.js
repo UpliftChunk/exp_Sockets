@@ -5,7 +5,8 @@ import UsernameInput from './components/UsernameInput';
 import DummyMousePointer from './components/MovableImage';
 import socketIO from 'socket.io-client';
 
-const ENDPOINT= 'http://localhost:4000';
+const ENDPOINT= `http://${process.env.REACT_APP_BACKEND_HOST_NAME}:4000`;
+console.log("Backend endpoint:", ENDPOINT);
 const socket= socketIO(ENDPOINT, {transports: [`websocket`]});
 
 function App() {
