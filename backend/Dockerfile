@@ -6,5 +6,5 @@ COPY . .
 FROM node:18-alpine
 WORKDIR /app
 COPY --from=build /app /app
-EXPOSE 4000
+EXPOSE 5000
 CMD ["node", "server.js"]
