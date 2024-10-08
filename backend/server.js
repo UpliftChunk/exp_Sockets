@@ -4,15 +4,18 @@ const http = require('http');
 const socketIo = require('socket.io');
 
 const app = express();
-const server = http.createServer(app);
-const io = socketIo(server);
 
 // Use CORS and allow requests from your frontend origin
-const corsOptions = {
-  origin: 'http://localhost:3000', // Adjust this to match your frontend URL
-};
+// const corsOptions = {
+//   origin: 'http://localhost:3000', // Adjust this to match your frontend URL
+// };
 
 app.use(cors());
+app.get('/', (req, res)=> {res.send("hi browser")});
+
+
+const server = http.createServer(app);
+const io = socketIo(server);
 
 const users= {};
 const targets= [{ x: 0, y: 0 }, { x: 100, y: 100}];
@@ -53,7 +56,7 @@ io.on('connection', (socket) => {
 });
 
 // Start the server
-const PORT = 4000;
+const PORT = 5000;
 server.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
